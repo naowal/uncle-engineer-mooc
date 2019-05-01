@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Uncle Engineer Lab : เข้าสู่ระบบ{% endblock %}
+
+{% block content %}
+
+    <h1>Login</h1>
+    <div class="module">
+        {% if form.errors %}
+            <p>Username และ Password ไม่ตรงกัน</p>
+        {% else %}
+            <p>กรุณาเข้าสู่ระบบได้ที่นี่:</p>
+        {% endif %}
+        <div class="login-form">
+            <form action="{% url 'login' %}" method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}" />
+                <p><input type="submit" value="เข้าสู่ระบบ"></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}
