@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if object %}
+        แก้ไขคอร์สเรียน "{{ object.title }}"
+    {% else %}
+        สร้างคอร์สเรียนใหม่
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+<h1>
+    {% if object %}
+        แก้ไขคอร์สเรียน "{{ object.title }}"
+    {% else %}
+        สร้างคอร์สเรียนใหม่
+    {% endif %}
+</h1>
+<div class="module">
+<h2>ข้อมูลคอร์สเรียน</h2>
+<form action="." method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+<p><input type="submit" value="Save course"></p>
+</form>
+</div>
+{% endblock %}

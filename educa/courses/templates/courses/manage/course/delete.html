@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}ลบคอร์สเรียน{% endblock %}
+{% block content %}
+<h1>ลบคอร์สเรียน "{{ object.title }}"</h1>
+    <div class="module">
+<form action="" method="post">
+{% csrf_token %}
+<p>คุณต้องการลบคอร์ส "{{ object }}"?</p>
+<input type="submit" class"button" value="Confirm">
+</form>
+</div>
+{% endblock %}

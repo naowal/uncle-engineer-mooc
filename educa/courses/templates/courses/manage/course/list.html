@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}My courses{% endblock %}
+{% block content %}
+<h1>คอร์สเรียนของฉัน</h1>
+<div class="module">
+{% for course in object_list %}
+<div class="course-info">
+<h3>{{ course.title }}</h3>
+<p>
+<a href="{% url "course_edit" course.id %}">แก้ไข</a>
+<a href="{% url "course_delete" course.id %}">ลบ</a>
+</p>
+</div>
+{% empty %}<p>คุณยังไม่มีคอร์สเรียนใดๆ</p>
+{% endfor %}
+<p>
+<a href="{% url "course_create" %}" class="button">สร้างคอร์สใหม่</a>
+</p>
+</div>
+{% endblock %}
