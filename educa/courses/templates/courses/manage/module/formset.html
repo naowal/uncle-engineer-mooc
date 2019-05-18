@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+    {% block title %}
+        แก้ไข "{{ course.title }}"
+    {% endblock %}
+{% block content %}
+<h1>แก้ไข "{{ course.title }}"</h1>
+<div class="module">
+<h2>Course modules</h2>
+<form action="" method="post">
+{{ formset }}
+    {{ formset.management_form }}
+{% csrf_token %}
+<input type="submit" class="button" value="บันทึก modules">
+</form>
+</div>
+{% endblock %}
