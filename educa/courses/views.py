@@ -55,11 +55,15 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
     course = None
 
     def get_formset(self, data=None):
-        return ModuleFormSet(instance=self.course,data=data)
+        return ModuleFormSet(instance=self.course,
+                                data=data)
 
-    def dispatch(self,request,pk):
-        self.course = get_object_or_404(Course,id=pk,owner=request.user)
-        return super(CourseModuleUpdateView,self.dispatch(request, pk))
+    def dispatch(self, request, pk):
+        self.course = get_object_or_404(Course,
+                                        id=pk,
+                                        owner=request.user)
+        return super(CourseModuleUpdateView,
+                    self).dispatch(request, pk)
 
     def get(self, request, *args, **kwargs):
         formset = self.get_formset()
@@ -108,9 +112,21 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
             obj.owner = request.user
             obj.save()
             if not id:
-                Content.objects.create(module=self.module,item=obj)
+                Content.objects.create(module=self.module,
+                                        item=obj)
             return redirect('module_content_list', self.module.id)
         return self.render_to_response({'form': form, 'object': self.obj})
+
+class ContentDeleteView(View):
+
+    def post(self, request, id):
+        content = get_object_or_404(Content,
+                                    id=id,
+                                    module__course__owner=request.user)
+        module = content.module
+        content.item.delete()
+        content.delete()
+        return redirect('module_content_list', module.id)
     
 
 
