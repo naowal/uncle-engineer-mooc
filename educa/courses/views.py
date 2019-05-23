@@ -117,6 +117,7 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
             return redirect('module_content_list', self.module.id)
         return self.render_to_response({'form': form, 'object': self.obj})
 
+#คลาสสำหรับลบ content
 class ContentDeleteView(View):
 
     def post(self, request, id):
@@ -128,5 +129,16 @@ class ContentDeleteView(View):
         content.delete()
         return redirect('module_content_list', module.id)
     
+#คลาสสำหรับแสดง บทเรียนทั้งหมด และลิสของcontentในแต่ละบทเรียน
+class ModuleContentListView(TemplateResponseMixin, View):
+    template_name = 'courses/manage/module/content_list.html'
+
+    def get(self,request, module_id):
+        module = get_object_or_404(Module,
+                                    id=module_id,
+                                    course__owner=request.user)
+
+        return self.render_to_response({'module': module})
+
 
 
