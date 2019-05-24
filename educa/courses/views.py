@@ -12,10 +12,16 @@ from .forms import ModuleFormSet
 # ชุด import สำหรับเพิ่ม content ย่อยๆ ให้กับ Module
 from django.forms.models import modelform_factory
 from django.apps import apps
-from .models import Module,Content,Course
+from .models import Module,Content,Course,Subject
 
 # ชุด import สำหรับใช้ django-braces
 from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
+
+# แสดง single course overview
+from django.views.generic.detail import DetailView
+
+# Count() ใช้สำหรับนับจำนวน
+from django.db.models import Count
 
 # สร้าง Mixins สำหรับ views class-based
 class OwnerMixin(object):
@@ -161,5 +167,23 @@ class ContentOrderView(CsrfExemptMixin,JsonRequestResponseMixin,View):
                 .update(order=order)
         return self.render_json_response({'saved': 'OK'})
 
-
+class CourseListView(TemplateResponseMixin, View):
+    model = Course
+    template_name = 'courses/course/list.html'
+    
+    def get(self, request, subject=None):
+        subjects = Subject.objects.annotate(
+                        total_courses=Count('courses'))
+        courses = Course.objects.annotate(
+                        total_modules=Count('modules'))
+        if subject:
+            subject = get_object_or_404(Subject, slug=subject)
+            courses = courses.filter(subject=subject)
+        return self.render_to_response({'subjects': subjects,
+                                        'subject': subject,
+                                        'courses': courses})
+#แสดง single course overview
+class CourseDetailView(DetailView):
+    model = Course
+    template_name = 'courses/course/detail.html'
 
