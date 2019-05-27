@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 """ สำหรับเรื่องการ login logout"""
 from django.contrib.auth import views as auth_views
-
+""" ใช้ CourseListView จาก courses"""
 from courses.views import CourseListView
+""" ใช้ ด้านจัดการ MEDIA"""
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('accounts/login', auth_views.LoginView.as_view(), name='login'),
@@ -28,3 +31,9 @@ urlpatterns = [
     path('', CourseListView.as_view(), name='course_list'),
     path('students/', include('students.urls')),
 ]
+
+""" ทำให้พร้อมสำหรับ อัพโหลด และ serve พวก media file ได้"""
+""" ใช้ใน DEBUG Mode เท่านั้น"""
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                            document_root=settings.MEDIA_ROOT)

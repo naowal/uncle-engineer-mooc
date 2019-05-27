@@ -32,8 +32,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #เรียกใช้ embed_video จาก django-embed-video
+    'embed_video',
     #เรียกใช้ apps courses
     'courses.apps.CoursesConfig',
+    #เรียกใช้ apps students
     'students.apps.StudentsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -124,3 +127,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
