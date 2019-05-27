@@ -8,4 +8,7 @@ urlpatterns = [
     path('enroll-course/',
         views.StudentEnrollCourseView.as_view(),
         name='student_enroll_course'),
+    path('course/<pk>/<module_id>',
+        views.StudentCourseDetailView.as_view(),
+        name='student_course_detail_module'),
 ]
