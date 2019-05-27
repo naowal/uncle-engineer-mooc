@@ -33,7 +33,11 @@ class Subject(models.Model):
 
 #คอร์สเรียน
 class Course(models.Model):
-
+    #สร้าง manytomany ระหว่าง course กับ user models
+    students = models.ManyToManyField(User,
+                                    related_name='courses_joined',
+                                    blank=True)
+                                    
     owner = models.ForeignKey(User,related_name='courses_created',on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject,related_name='courses',on_delete=models.CASCADE)
     title = models.CharField(max_length=200)

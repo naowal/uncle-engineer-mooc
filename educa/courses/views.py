@@ -17,11 +17,14 @@ from .models import Module,Content,Course,Subject
 # ชุด import สำหรับใช้ django-braces
 from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
 
-# แสดง single course overview
+# ชุด import แสดง single course overview
 from django.views.generic.detail import DetailView
 
-# Count() ใช้สำหรับนับจำนวน
+# Count() ใช้สำหรับนับจำนวนเรคอร์ด
 from django.db.models import Count
+
+# ชุด import ฟอร์มสำหรับปุ่มเข้าร่วมคอร์ส
+from students.forms import CourseEnrollForm
 
 # สร้าง Mixins สำหรับ views class-based
 class OwnerMixin(object):
@@ -186,4 +189,10 @@ class CourseListView(TemplateResponseMixin, View):
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/course/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseDetailView,self).get_context_data(**kwargs)
+        context['enroll_form']= CourseEnrollForm(
+                                    initial={'course':self.object})
+        return context
 
