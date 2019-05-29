@@ -18,6 +18,7 @@ from courses.models import Course
 #ชุด import สำหรับอธิบายรายละเอียดคอร์สเรียน
 from django.views.generic.detail import DetailView
 
+
 #View แบบฟอร์มสมัครสมาชิกนักเรียน
 class StudentRegistrationView(CreateView):
     template_name = 'students/student/registration.html'
@@ -73,8 +74,7 @@ class StudentCourseDetailView(DetailView):
         course = self.get_object()
         if 'module_id' in self.kwargs:
             # get current module
-            context['module'] = course.modules.get(
-                                id=self.kwargs['module_id'])
+            context['module'] = course.modules.get(id=self.kwargs['module_id'])
         else:
             # get first module
             context['module'] = course.modules.all()[0]
