@@ -1,4 +1,4 @@
-Django==2.0.11
+Django==2.0.12
 Pillow==5.1.0
 django-braces==1.13.0
 django-embed-video==1.1.2
