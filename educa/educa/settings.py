@@ -27,7 +27,7 @@ SECRET_KEY = 'o=tygetinbd^5f5hb(ob=@-lodt$^n+gv#&0u+b=#ds^=io$m+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -136,6 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 
@@ -145,7 +146,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CACHES = {
     'default': {
     'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-    'LOCATION': '127.0.0.1:11211',
+    'LOCATION': 'localhost:11211',
     }
 }
 
@@ -160,6 +161,6 @@ REST_FRAMEWORK = {
 }
 
 try:
-     from local_settings import *
+     from .local_settings import *
 except ImportError:
      pass
