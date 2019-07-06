@@ -93,19 +93,15 @@
                                 {% else %}
                                     <li><a href="{% url "login" %}">เข้าสู่ระบบ</a></li>
                                 {% endif %}
-                                <li><a href="https://www.uncle-engineer-book.com">ร้านหนังสือ</a></li>
+                                <li><a href="www.uncle-engineer-book.com">ร้านหนังสือ</a></li>
                             </ul>
                         </div>
                     </nav><!-- end navbar -->
                 </div><!-- end container -->
             </header>
     
-            <section id="home" class="video-section js-height-full" style="height: 607px;">
-                    <div class="overlay"></div>
-                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                            <source src="{% static "upload/preview.mp4" %}" type="video/mp4">
-                    </video>
-                    <div class="home-text-wrapper relative container">
+            <section class="video-section js-height-full" style="height: 800px;">
+<div class="home-text-wrapper relative container">
                             <div class="home-message">
                                 <p>Uncle Engineer Lab</p>
                                 <small>แหล่งกบดานทางความรู้ รวบรวมคอร์สเรียนมากมาย สอนโดย ลุงวิศวกร สอนคำนวณ</small>
@@ -116,6 +112,11 @@
                                 </div><!-- end row -->
                             </div>
                         </div>
+
+                    <div class="overlay"></div>
+                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                            <source src="{% static "upload/preview.mp4" %}" type="video/mp4">
+                    </video>
                 <div class="slider-bottom">
                         <span>เพิ่มเติม<i class="fa fa-angle-down"></i></span>
                     </div>
@@ -124,89 +125,7 @@
     
             {% block content %}
             {% endblock %}
-    
-            <section class="section">
-                <div class="container">
-                    <div class="section-title text-center">
-                        <h3>ความคิดเห็นของนักเรียน</h3>
-                        <p></p>
-                    </div><!-- end title -->
-    
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="box testimonial">
-                                <p class="testiname"><strong><img src="{% static "upload/testimonial_01.png" %}" alt="" class="img-circle"> </strong></p>
-                                <p></p>
-                                <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div><!-- end testimonial -->
-                        </div><!-- end col -->
-    
-                        <div class="col-md-4">
-                            <div class="box testimonial">
-                                <p class="testiname"><strong><img src="{% static "upload/testimonial_02.png" %}" alt="" class="img-circle"> </strong></p>
-                                <p></p>
-                                <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                            </div><!-- end testimonial -->
-                        </div><!-- end col -->
-    
-                        <div class="col-md-4">
-                            <div class="box testimonial">
-                                <p class="testiname"><strong><img src="{% static "upload/testimonial_03.png" %}" alt="" class="img-circle"></strong></p>
-                                <p></p>
-                                <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div><!-- end testimonial -->
-                        </div><!-- end col -->
-                    </div><!-- end row -->
-                </div><!-- end container -->
-            </section>
-    
-            <section class="section bgcolor1">
-                <div class="container">
-                    <a href="#">
-                    <div class="row callout">
-                        <div class="col-md-4 text-center">
-                            <h3><sup></sup>500บาท</h3>
-                            <h4>ราคาที่คุณจับต้องได้!</h4>
-                        </div><!-- end col -->
-    
-                        <div class="col-md-8">
-                            <p class="lead">ด่วนจำนวนจำกัด! เข้าคอร์สเรียนได้ไม่จำกัด พร้อมติดต่อครูผู้สอนได้ทุกเวลา </p>
-                        </div>
-                    </div><!-- end row -->
-                    </a>
-                </div><!-- end container -->  
-            </section>
-
-            <section class="section db p120">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="tagline-message text-center">
-                                <h3>ก้าวไปทุกวันอย่างช้าๆไม่หยุดนิ่ง ซักวันจะถึงเป้าหมายที่วางไว้</h3>
-                            </div>
-                        </div><!-- end col -->
-                    </div><!-- end row -->
-                </div><!-- end container -->
-            </section><!-- end section -->
-    
+      
             <div class="copyrights">
                 <div class="container">
                     <div class="clearfix">
