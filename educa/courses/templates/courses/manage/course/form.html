@@ -10,6 +10,26 @@
 
 
 {% block content %}
+<section class="section db p120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tagline-message page-title text-center">
+                            <h3>จัดการคอร์สเรียน</h3>
+                            <ul class="breadcrumb">
+                                <li><a href="javascript:void(0)">คอร์สเรียนของฉัน</a></li>
+                                <li class="active">จัดการคอร์สเรียน</li>
+                            </ul>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+
+<section class="section gb nopadtop">
+            <div class="container">
+                <div class="boxed boxedp4">
+
 <h1>
     {% if object %}
         แก้ไขคอร์สเรียน "{{ object.title }}"
@@ -25,4 +45,7 @@
 <p><input type="submit" value="บันทึกคอร์สเรียน"></p>
 </form>
 </div>
+                </div><!-- end container -->
+            </div>
+        </section>
 {% endblock %}

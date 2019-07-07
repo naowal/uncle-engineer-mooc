@@ -3,9 +3,29 @@
 {% block title %}Logged out{% endblock %}
 
 {% block content %}
-    <h1>Logged out</h1>
+    <section class="section db p120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tagline-message page-title text-center">
+                            <h3>ออกจากระบบ</h3>
+                            <ul class="breadcrumb">
+                                <li><a href="javascript:void(0)">ผู้เรียน</a></li>
+                                <li class="active">ออกจากระบบ</li>
+                            </ul>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+<section class="section gb nopadtop">
+            <div class="container">
+                <div class="boxed boxedp4">
     <div class="module">
-        <p>You have been successfully logged out.
-            You can <a href="{% url "login" %}">log-in again</a>.</p>
+        <p>คุณได้ออกจากระบบแล้ว
+            คุณสามารถ <a href="{% url "login" %}">เข้าสู่ระบบ</a>อีกครั้ง</p>
     </div>
+                </div><!-- end container -->
+            </div>
+        </section>
 {% endblock %}

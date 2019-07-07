@@ -2,36 +2,62 @@
 {% load course %}
 
 {% block title %}
-    Module {{ module.order|add:1 }}: {{ module.title }}
+    บทเรียน {{ module.order|add:1 }}: {{ module.title }}
 {% endblock %}
 
 {% block content %}
+<section id="home" class="video-section js-height-full" style="height: 607px;">
+                    <div class="overlay"></div>
+                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                            <source src="/static/upload/preview.mp4" type="video/mp4">
+                    </video>
+                <div class="slider-bottom">
+                        <span>เพิ่มเติม<i class="fa fa-angle-down"></i></span>
+                    </div>
+            <div id="video_background_video_0" style="z-index: -1; position: absolute; inset: 0px; overflow: hidden;"><video autoplay="" loop="" onended="this.play()" style="position: absolute; top: 0px; left: -45px;" width="1080" height="607"><source src="upload/preview.mp4" type="video/mp4"><source src="upload/preview.webm" type="video/webm"><source src="upload/preview.ogg" type="video/ogg"></video></div></section>
+
+
+<section class="section gb nopadtop">
+        <div class="container">
 {% with course=module.course %}
-    <h1>Course "{{ course.title }}"</h1>
+
+    <h1>คอรสเรียน "{{ course.title }}"</h1>
+ <div class="row">
+                <div class="col-md-3">
+                    <div class="box m30">
+                        <i class="flaticon-computer-tool-for-education"></i>
     <div class="contents">
-        <h3>Modules</h3>
+        <h3>บทเรียน</h3>
         <ul id="modules">
             {% for m in course.modules.all %}
             <li data-id="{{ m.id }}" {% if m == module %}
             class="selected"{% endif %}>
                 <a href="{% url "module_content_list" m.id %}">
                 <span>
-                    Module <span class="order">{{ m.order|add:1 }}</span>
+                    บทเรียน <span class="order">{{ m.order|add:1 }}</span>
                 </span>
                 <br>
                 {{ m.title }}
                 </a>
             </li>
             {% empty %}
-            <li>No modules yet.</li>
+            <li>ยังไม่มีบทเรียน</li>
             {% endfor %}
         </ul>
+   </div>
+                </div><!-- end col -->
+
+
         <p><a href="{% url "course_module_update" course.id %}">
-        Edit modules</a></p>
+        แก้ไขบทเรียน</a></p>
     </div>
+
+ <div class="col-md-9">
+                    <div class="box m30">
+                        <i class="flaticon-monitor-tablet-and-smartohone"></i>
     <div class="module">
-        <h2>Module {{ module.order|add:1 }}: {{ module.title }}</h2>
-        <h3>Module contents:</h3>
+        <h2>บทเรียน {{ module.order|add:1 }}: {{ module.title }}</h2>
+        <h3>เนื้อหาบทเรียน:</h3>
         <div id="module-contents">
             {% for content in module.contents.all %}
             <div data-id="{{ content.id }}">
@@ -46,20 +72,28 @@
                 {% endwith %}
             </div>
             {% empty %}
-            <p>This module has no contents yet.</p>{% endfor %}
+            <p>บทเรียนนี้ยังไม่มีเนื้อหา</p>{% endfor %}
         </div>
-        <h3>Add new content:</h3>
+        <h3>เพิ่มเนื้อหาใหม่:</h3>
         <ul class="content-types">
             <li><a href="{% url "module_content_create" module.id "text" %}">
-                Text</a></li>
+                ข้อความ</a></li>
             <li><a href="{% url "module_content_create" module.id "image" %}">
-                Image</a></li>
+                รูปภาพ</a></li>
             <li><a href="{% url "module_content_create" module.id "video" %}">
-                Video</a></li>
+                วิดิโอ</a></li>
             <li><a href="{% url "module_content_create" module.id "file" %}">
-                File</a></li>
+                ไฟล์แนบ</a></li>
         </ul>
     </div>
+    </div>
+                </div><!-- end col -->
+
+
+            <hr class="invis">
+
+        </div><!-- end container -->
+    </div></section>
 {% endwith %}
 {% endblock %}
 

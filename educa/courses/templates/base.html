@@ -93,36 +93,14 @@
                                 {% else %}
                                     <li><a href="{% url "login" %}">เข้าสู่ระบบ</a></li>
                                 {% endif %}
-                                <li><a href="www.uncle-engineer-book.com">ร้านหนังสือ</a></li>
+                                <li><a href="http://www.uncle-engineer-book.com" target="_blank">ร้านหนังสือ</a></li>
                             </ul>
                         </div>
                     </nav><!-- end navbar -->
                 </div><!-- end container -->
             </header>
     
-            <section class="video-section js-height-full" style="height: 800px;">
-<div class="home-text-wrapper relative container">
-                            <div class="home-message">
-                                <p>Uncle Engineer Lab</p>
-                                <small>แหล่งกบดานทางความรู้ รวบรวมคอร์สเรียนมากมาย สอนโดย ลุงวิศวกร สอนคำนวณ</small>
-                                <div class="btn-wrapper">
-                                    <div class="text-center">
-                                        <a href="#" class="btn btn-primary wow slideInLeft" style="visibility: visible; animation-name: slideInLeft;">ดูคอร์สเรียน</a> 
-                                    </div>
-                                </div><!-- end row -->
-                            </div>
-                        </div>
-
-                    <div class="overlay"></div>
-                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                            <source src="{% static "upload/preview.mp4" %}" type="video/mp4">
-                    </video>
-                <div class="slider-bottom">
-                        <span>เพิ่มเติม<i class="fa fa-angle-down"></i></span>
-                    </div>
-                    </div>
-            </section>
-    
+     
             {% block content %}
             {% endblock %}
       
